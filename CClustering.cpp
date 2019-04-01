@@ -96,7 +96,20 @@ int CClustering::kMeans(int nPoint, int nVar, double* points, int kGroup)
 
 int CClustering::kMedoid(int nPoint, int nVar, double* points, int kGroup)
 {
+    this->kGroup = kGroup;
+    double *centroids = new double [nPoint*nVar];
+    double *dist = new double[kGroup];
     
+    
+    for (int k = 0; k < kGroup; k++)
+    {
+        int index = iRandom(0, kGroup - 1);
+        for(int i = 0; i < nVar; i++) centroids[k*nVar + i] = points[index*nVar + i];
+    }
+    
+    
+    delete [] centroids;
+    delete [] dist;
     return 0;
 }
 
